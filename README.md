@@ -1,3 +1,11 @@
+## fastmcp_tutorial_auden_dev.to
+
+Based on tutorial implementation of https://dev.to/auden/introducing-fastapi-mcp-effortless-ai-integration-for-your-fastapi-apis-2c8c
+
+Implementation is currently incomplete as attemting to enable 
+- [ ] Access to multiple LLMs
+- [ ] Calls from CLI + multiple agent 
+
 # Installation
 
 install
@@ -72,10 +80,6 @@ run
 - If you are offered a command like `python main.py curl http://localhost:8000/hello` then it means that the MCP server has not detected the uvicorn server and because the installation is running from a venv the launch will fail.
 
 # Resources
-
-## fastmcp_tutorial_auden_dev.to
-
-tutorial implementation of https://dev.to/auden/introducing-fastapi-mcp-effortless-ai-integration-for-your-fastapi-apis-2c8c
 
 ## FastMCP
 
