@@ -1,0 +1,29 @@
+// {
+//   "mcpServers": {
+//     "fastapi-mcp": {
+//       "url": "https://psychic-fiesta-gvjv7j6wg63vv59-8000.app.github.dev/mcp"
+//     }
+//   }
+// }
+
+// when not running in github cose spaces: 
+// {
+//   "mcpServers": {
+//     "fastapi-mcp": {
+//       "url": "http://localhost:8000/mcp"
+//     }
+//   }
+// }
+
+{
+  "mcpServers": {
+    "fastapi-mcp": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://localhost:8000/mcp",
+        "8080"
+      ]
+    }
+  }
+}

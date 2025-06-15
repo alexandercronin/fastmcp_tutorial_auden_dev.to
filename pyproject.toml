@@ -1,0 +1,45 @@
+# --- pyproject.toml ---
+
+[build-system]
+# This section is correct now.
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# --- Core Project Metadata ---
+name = "fastmcp_tutorial_auden_dev.to"
+version = "0.1.0"
+description = "A project demonstrating FastAPI with MCP."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+    { name = "Alex Cronin", email = "alex.cronin+github@gmail.com" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Framework :: FastAPI",
+]
+
+# --- Main Dependencies ---
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "fastapi-mcp",
+    "google-generativeai"
+]
+
+# --- Optional Dependencies ---
+[project.optional-dependencies]
+dev = []
+
+[project.scripts]
+# --- Console Scripts Entry Points ---
+# NOTE: This expects a 'main' function inside a file named 'main_gemini.py'.
+# If your file is main.py, you should change this to "main:main".
+my-app = "main:main"
+
+[tool.setuptools.packages.find]
+# This tells setuptools to ignore these folders when searching for Python packages.
+exclude = ["node_modules*", "build*"]
