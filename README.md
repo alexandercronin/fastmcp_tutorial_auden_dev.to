@@ -1,6 +1,6 @@
-## fastmcp_tutorial_auden_dev.to
+## fastmcp in vscode
 
-Based on tutorial implementation of https://dev.to/auden/introducing-fastapi-mcp-effortless-ai-integration-for-your-fastapi-apis-2c8c
+Useful tutorial https://dev.to/auden/introducing-fastapi-mcp-effortless-ai-integration-for-your-fastapi-apis-2c8c
 
 Implementation is currently incomplete as attemting to enable
 
