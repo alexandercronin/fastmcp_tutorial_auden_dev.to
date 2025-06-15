@@ -2,9 +2,10 @@
 
 Based on tutorial implementation of https://dev.to/auden/introducing-fastapi-mcp-effortless-ai-integration-for-your-fastapi-apis-2c8c
 
-Implementation is currently incomplete as attemting to enable 
+Implementation is currently incomplete as attemting to enable
+
 - [ ] Access to multiple LLMs
-- [ ] Calls from CLI + multiple agent 
+- [ ] Calls from CLI + multiple agent
 
 # Installation
 
@@ -24,60 +25,65 @@ run
 
 - Open copilot chat
 - Ensure the `Agent` item is selected from the drop down
-- Enter the text "Run the /hello endpoint"
-- Safety feature of copilot will ask you if you wish to execute a command like `curl http://localhost:8000/hello`
-- Expected reply : {"message":"Hello World"}
+- Press that the setting button and then ensure that you MCP server selected and the endpoints are ticked
+- Ensure that there is no files open as they will get priority in the execution of the context of the server
+- Enter the text "say hello"
+- The agent will reply saying "Ran `say_hello` - fastapi-mcp (MCP Server) Hello My Friend"
 
 # Troubleshooting
 
-1. Ensure the fastapi application is work
-2. Ensure that the MCP server us running
-3. Ensure that the MCP debug server output is something like :
+1. Open the command console (Ctrl+p)
+2. Press `>` and type `MCP` select the server listed, this is referenced from the `mcp.json` file in `.vscode` settings folder
+3. Select `List Servers`
+4. Select the server you want
+5. Select `Restart Server`
+6. Repeat the steps and this time select show output. You should see something like the output below:
 
-```bash
-2025-06-15 00:53:50.688 [info] Connection state: Error Process exited with code 143
-2025-06-15 00:53:56.669 [info] Starting server fastapi-mcp
-2025-06-15 00:53:56.670 [info] Connection state: Starting
-2025-06-15 00:53:56.695 [info] Starting server from Remote extension host
-2025-06-15 00:53:56.746 [info] Connection state: Starting
-2025-06-15 00:53:56.746 [info] Connection state: Running
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] Using specified callback port: 8080
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] [95610] Connecting to remote server: http://localhost:8000/mcp
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] Using transport strategy: http-first
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] Received error: Error POSTing to endpoint (HTTP 405): {"detail":"Method Not Allowed"}
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] Recursively reconnecting for reason: falling-back-to-alternate-transport
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] [95610] Connecting to remote server: http://localhost:8000/mcp
-2025-06-15 00:53:57.589 [warning] [server stderr] [95610] Using transport strategy: sse-only
-2025-06-15 00:53:57.591 [warning] [server stderr] [95610] Connected to remote server using SSEClientTransport
-2025-06-15 00:53:57.591 [warning] [server stderr] [95610] Local STDIO server running
-2025-06-15 00:53:57.592 [warning] [server stderr] [95610] Proxy established successfully between local STDIO and remote SSEClientTransport
-2025-06-15 00:53:57.592 [warning] [server stderr] [95610] Press Ctrl+C to exit
-2025-06-15 00:53:57.592 [warning] [server stderr] [95610] [Local→Remote] initialize
-2025-06-15 00:53:57.592 [warning] [server stderr] [95610] {
-2025-06-15 00:53:57.592 [warning] [server stderr]   "jsonrpc": "2.0",
-2025-06-15 00:53:57.592 [warning] [server stderr]   "id": 1,
-2025-06-15 00:53:57.592 [warning] [server stderr]   "method": "initialize",
-2025-06-15 00:53:57.592 [warning] [server stderr]   "params": {
-2025-06-15 00:53:57.592 [warning] [server stderr]     "protocolVersion": "2025-03-26",
-2025-06-15 00:53:57.592 [warning] [server stderr]     "capabilities": {
-2025-06-15 00:53:57.592 [warning] [server stderr]       "roots": {
-2025-06-15 00:53:57.592 [warning] [server stderr]         "listChanged": true
-2025-06-15 00:53:57.592 [warning] [server stderr]       },
-2025-06-15 00:53:57.592 [warning] [server stderr]       "sampling": {}
-2025-06-15 00:53:57.592 [warning] [server stderr]     },
-2025-06-15 00:53:57.592 [warning] [server stderr]     "clientInfo": {
-2025-06-15 00:53:57.592 [warning] [server stderr]       "name": "Visual Studio Code (via mcp-remote 0.1.15)",
-2025-06-15 00:53:57.592 [warning] [server stderr]       "version": "1.101.0"
-2025-06-15 00:53:57.592 [warning] [server stderr]     }
-2025-06-15 00:53:57.592 [warning] [server stderr]   }
-2025-06-15 00:53:57.592 [warning] [server stderr] }
-2025-06-15 00:53:57.593 [warning] [server stderr] [95610] [Remote→Local] 1
-2025-06-15 00:53:57.633 [warning] [server stderr] [95610] [Local→Remote] notifications/initialized
-2025-06-15 00:53:57.634 [warning] [server stderr] [95610] [Local→Remote] tools/list
-2025-06-15 00:53:57.665 [warning] [server stderr] [95610] [Remote→Local] 2
-2025-06-15 00:53:57.665 [info] Discovered 1 tools
 ```
-- If you are offered a command like `python main.py curl http://localhost:8000/hello` then it means that the MCP server has not detected the uvicorn server and because the installation is running from a venv the launch will fail.
+2025-06-15 02:45:01.544 [info] Starting server fastapi-mcp
+2025-06-15 02:45:01.545 [info] Connection state: Starting
+2025-06-15 02:45:01.563 [info] Starting server from LocalProcess extension host
+2025-06-15 02:45:01.580 [info] Connection state: Starting
+2025-06-15 02:45:01.581 [info] Connection state: Running
+2025-06-15 02:45:01.818 [warning] [server stderr] [84919] Using specified callback port: 8080
+2025-06-15 02:45:01.819 [warning] [server stderr] [84919] [84919] Connecting to remote server: http://localhost:8000/mcp
+2025-06-15 02:45:01.819 [warning] [server stderr] [84919] Using transport strategy: http-first
+2025-06-15 02:45:01.855 [warning] [server stderr] [84919] Received error: Error POSTing to endpoint (HTTP 405): {"detail":"Method Not Allowed"}
+2025-06-15 02:45:01.855 [warning] [server stderr] [84919] Recursively reconnecting for reason: falling-back-to-alternate-transport
+2025-06-15 02:45:01.855 [warning] [server stderr] [84919] [84919] Connecting to remote server: http://localhost:8000/mcp
+2025-06-15 02:45:01.855 [warning] [server stderr] [84919] Using transport strategy: sse-only
+2025-06-15 02:45:01.859 [warning] [server stderr] [84919] Connected to remote server using SSEClientTransport
+2025-06-15 02:45:01.859 [warning] [server stderr] [84919] Local STDIO server running
+2025-06-15 02:45:01.859 [warning] [server stderr] [84919] Proxy established successfully between local STDIO and remote SSEClientTransport
+2025-06-15 02:45:01.859 [warning] [server stderr] [84919] Press Ctrl+C to exit
+2025-06-15 02:45:01.860 [warning] [server stderr] [84919] [Local→Remote] initialize
+2025-06-15 02:45:01.860 [warning] [server stderr] [84919] {
+2025-06-15 02:45:01.860 [warning] [server stderr]   "jsonrpc": "2.0",
+2025-06-15 02:45:01.860 [warning] [server stderr]   "id": 1,
+2025-06-15 02:45:01.860 [warning] [server stderr]   "method": "initialize",
+2025-06-15 02:45:01.860 [warning] [server stderr]   "params": {
+2025-06-15 02:45:01.860 [warning] [server stderr]     "protocolVersion": "2025-03-26",
+2025-06-15 02:45:01.861 [warning] [server stderr]     "capabilities": {
+2025-06-15 02:45:01.861 [warning] [server stderr]       "roots": {
+2025-06-15 02:45:01.861 [warning] [server stderr]         "listChanged": true
+2025-06-15 02:45:01.861 [warning] [server stderr]       },
+2025-06-15 02:45:01.861 [warning] [server stderr]       "sampling": {}
+2025-06-15 02:45:01.861 [warning] [server stderr]     },
+2025-06-15 02:45:01.861 [warning] [server stderr]     "clientInfo": {
+2025-06-15 02:45:01.861 [warning] [server stderr]       "name": "Visual Studio Code (via mcp-remote 0.1.15)",
+2025-06-15 02:45:01.861 [warning] [server stderr]       "version": "1.101.0"
+2025-06-15 02:45:01.861 [warning] [server stderr]     }
+2025-06-15 02:45:01.861 [warning] [server stderr]   }
+2025-06-15 02:45:01.861 [warning] [server stderr] }
+2025-06-15 02:45:01.865 [warning] [server stderr] [84919] [Remote→Local] 1
+2025-06-15 02:45:01.866 [warning] [server stderr] [84919] [Local→Remote] notifications/initialized
+2025-06-15 02:45:01.866 [warning] [server stderr] [84919] [Local→Remote] tools/list
+2025-06-15 02:45:01.870 [warning] [server stderr] [84919] [Remote→Local] 2
+2025-06-15 02:45:01.870 [info] Discovered 2 tools
+```
+
+- If you are offered a command like `python main.py curl http://localhost:8000/hello` then it means that it may be reading this context from an open main.py file, or the server is not running. 
+- if when prompted to use the tool/agent you are getting messages to say the agent was cancelled then select continue for the session and it should perform better. 
 
 # Resources
 

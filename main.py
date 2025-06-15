@@ -1,3 +1,4 @@
+from datetime import datetime
 from fastapi import FastAPI
 from fastapi_mcp import FastApiMCP
 import uvicorn
@@ -19,10 +20,18 @@ app = FastAPI(title="Simple API")
 @app.get("/hello", operation_id="say_hello")
 async def hello():
     """A simple greeting endpoint"""
-    return {"message": "Hello World"}
+    return {"message": "Hello My Friend"}
+
+@app.get("/time", operation_id="tell_me_the_current_time")
+async def time():
+    """An endpiint which returns the current time"""
+    time_now = datetime.now().isoformat()
+    return {"message": time_now}
 
 # Expose MCP server§
-mcp = FastApiMCP(app, name="Simple MCP Service")
+mcp = FastApiMCP(app, 
+                 name="Simple MCP Service",
+)
 mcp.mount()
 
 print("")
